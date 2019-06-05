@@ -13,15 +13,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this is an "echo" websocket service for testing pusposes
+    // Open a connection
     this.connection = new WebSocket("ws://localhost:3001");
+
+    // When a connection is made
+    this.connection.onopen = function() {
+      console.log("Opened connection ");
+    };
+
     // listen to onmessage event
-    this.connection.onmessage = evt => {
-      console.log("meep", evt);
+    this.connection.onmessage = event => {
+      const returnedData = JSON.parse(event.data);
       // add the new message to state
-      //   this.setState({
-      //   messages : this.state.messages.concat([ evt.data ])
-      // })
+      const newMessage = {
+        username: returnedData.data.username,
+        content: returnedData.data.content,
+        id: returnedData.id
+      };
+      this.setState({
+        messages: this.state.messages.concat([newMessage])
+      });
     };
   }
 
@@ -29,11 +40,7 @@ class App extends Component {
     const newMessage = {
       username: this.state.currentUser.name,
       content: input
-      //id: this.state.messages.length + 1
     };
-    const oldMessages = this.state.messages;
-    const newMessages = [...oldMessages, newMessage];
-    // this.setState({ messages: newMessages });
     this.sendDataToServer(newMessage);
   };
 
