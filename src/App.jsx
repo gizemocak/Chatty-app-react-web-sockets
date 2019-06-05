@@ -8,7 +8,8 @@ class App extends Component {
 
     this.state = {
       currentUser: { name: "Bob" },
-      messages: []
+      messages: [],
+      userCount: null
     };
   }
 
@@ -51,6 +52,12 @@ class App extends Component {
             messages: this.state.messages.concat([newNotification])
           });
           break;
+
+        case "usercount":
+          //handle user count
+          console.log("userCount", returnedData);
+          this.setState({ userCount: returnedData.users });
+          break;
         default:
           // show an error in the console if the message type is unknown
           throw new Error("Unknown event type " + returnedData.type);
@@ -85,7 +92,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MessageList messages={this.state.messages} />
+        <MessageList
+          messages={this.state.messages}
+          userCount={this.state.userCount}
+        />
         <ChatBar
           currentUser={this.state.currentUser.name}
           handleNewMessage={this.handleNewMessage}
