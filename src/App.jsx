@@ -24,17 +24,44 @@ class App extends Component {
     // listen to onmessage event
     this.connection.onmessage = event => {
       const returnedData = JSON.parse(event.data);
-      // add the new message to state
-      const newMessage = {
-        username: returnedData.data.username,
-        content: returnedData.data.content,
-        id: returnedData.id
-      };
-      this.setState({
-        messages: this.state.messages.concat([newMessage])
-      });
+      // // add the new message to state
+
+      switch (returnedData.type) {
+        case "incomingMessage":
+          // handle incoming message
+          const newMessage = {
+            username: returnedData.username,
+            content: returnedData.content,
+            id: returnedData.id
+          };
+          this.setState({
+            messages: this.state.messages.concat([newMessage])
+          });
+          break;
+
+        case "incomingNotification":
+          // handle incoming notification
+          console.log("notification received");
+          const newNotification = {
+            username: "__system__",
+            content: returnedData.content,
+            id: returnedData.id
+          };
+          this.setState({
+            messages: this.state.messages.concat([newNotification])
+          });
+          break;
+        default:
+          // show an error in the console if the message type is unknown
+          throw new Error("Unknown event type " + returnedData.type);
+      }
     };
   }
+
+  sendDataToServer = data => {
+    // Send the msg object as a JSON-formatted string.
+    this.connection.send(JSON.stringify(data));
+  };
 
   handleNewMessage = input => {
     const newMessage = {
@@ -45,18 +72,14 @@ class App extends Component {
     this.sendDataToServer(newMessage);
   };
 
-  sendDataToServer = data => {
-    var msg = {
-      type: "message",
-      data
-    };
-
-    // Send the msg object as a JSON-formatted string.
-    this.connection.send(JSON.stringify(msg));
-  };
-
   updateUserName = currentUser => {
+    const oldUserName = this.state.currentUser;
+    const newUserName = {
+      type: "postNotification",
+      content: `${oldUserName.name} has changed their name to ${currentUser}`
+    };
     this.setState({ currentUser: { name: currentUser } });
+    this.sendDataToServer(newUserName);
   };
 
   render() {
