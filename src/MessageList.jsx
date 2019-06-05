@@ -5,9 +5,9 @@ class MessageList extends Component {
     const { messages } = this.props;
     return messages.map(message => {
       return (
-        <li key={message.id}>
+        <div key={message.id}>
           <Message message={message} />
-        </li>
+        </div>
       );
     });
   };
@@ -20,9 +20,7 @@ class MessageList extends Component {
             Chatty
           </a>
         </nav>
-        <main className="messages">
-          <ul>{this.handleRenderMessage()}</ul>
-        </main>
+        <main className="messages">{this.handleRenderMessage()}</main>
       </div>
     );
   }

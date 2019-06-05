@@ -54,6 +54,10 @@ class App extends Component {
     this.connection.send(JSON.stringify(msg));
   };
 
+  updateUserName = currentUser => {
+    this.setState({ currentUser: { name: currentUser } });
+  };
+
   render() {
     return (
       <div>
@@ -61,6 +65,7 @@ class App extends Component {
         <ChatBar
           currentUser={this.state.currentUser.name}
           handleNewMessage={this.handleNewMessage}
+          updateUserName={this.updateUserName}
         />
       </div>
     );

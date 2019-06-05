@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
 class ChatBar extends Component {
-  // getUserInput = e => {
-  //   e.preventDefault();
-  //   let elm = e.target.elements;
-  //   let input = elm.input.value;
-  //   this.props.handleNewMessage(input);
-  // };
-
-  handleKeyDown = event => {
-    let input = event.target.value;
-    if (event.keyCode === 13) {
+  handleKeyDown = e => {
+    let input = e.target.value;
+    if (e.keyCode === 13) {
       this.props.handleNewMessage(input);
       input = "";
+    }
+  };
+
+  handleChangeUserName = e => {
+    if (e.keyCode === 13) {
+      let input = e.target.value;
+      this.props.updateUserName(input);
     }
   };
 
@@ -23,16 +23,14 @@ class ChatBar extends Component {
         <input
           className="chatbar-username"
           placeholder={currentUser}
-          // name={currentUser}
+          onKeyUp={this.handleChangeUserName}
         />
         <input
           type="text"
           className="chatbar-message"
           placeholder="Type a message and hit ENTER"
-          // name="input"
           onKeyUp={this.handleKeyDown}
         />
-        {/* <button style={{ display: "none" }} type="submit" /> */}
       </form>
     );
   }
