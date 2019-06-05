@@ -32,6 +32,7 @@ wss.on('connection', (ws) => {
   ws.on('message', function incoming(data) {
     const obj = JSON.parse(data)
     obj.id = uuidv4()
+    obj.type = "incomingMessage"
     console.log(obj)
     console.log(`User${obj.data.username} said ${obj.data.content}`);
 

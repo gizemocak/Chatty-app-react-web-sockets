@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ChatBar from "../src/ChatBar.jsx";
 import MessageList from "../src/MessageList.jsx";
-// import "../styles/home.scss";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +38,7 @@ class App extends Component {
 
   handleNewMessage = input => {
     const newMessage = {
+      type: "postMessage",
       username: this.state.currentUser.name,
       content: input
     };
