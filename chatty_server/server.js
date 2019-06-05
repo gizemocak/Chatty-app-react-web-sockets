@@ -1,7 +1,7 @@
 // server.js
-
 const express = require('express');
 const SocketServer = require('ws').Server;
+//uuid generator
 const uuidv4 = require('uuid/v4');
 
 
@@ -19,9 +19,7 @@ const wss = new SocketServer({
   server
 });
 
-// Set up a callback that will run when a client connects to the server
-// When a client connects they are assigned a socket, represented by
-// the ws parameter in the callback.
+// When a connection is established
 wss.on('connection', (ws) => {
   console.log('Client connected');
 
@@ -30,12 +28,17 @@ wss.on('connection', (ws) => {
     ws.send('You are connected');
   });
 
-  //receiving data
+  // When data is received
   ws.on('message', function incoming(data) {
     const obj = JSON.parse(data)
     obj.id = uuidv4()
     console.log(obj)
     console.log(`User${obj.data.username} said ${obj.data.content}`);
+
+    //broadcasting to clients
+    wss.clients.forEach(client => {
+      client.send(JSON.stringify(obj));
+    });
   });
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
