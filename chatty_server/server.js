@@ -31,11 +31,11 @@ wss.on('connection', (ws) => {
   // When data is received
   ws.on('message', function incoming(data) {
     const obj = JSON.parse(data)
+    // console.log("type", obj.type)
     obj.id = uuidv4()
-    obj.type = "incomingMessage"
-    console.log(obj)
-    console.log(`User${obj.data.username} said ${obj.data.content}`);
-
+    obj.type = obj.type === 'postNotification' ? 'incomingNotification' : 'incomingMessage'
+    console.log("server#onMessage", obj)
+    //console.log(`User${obj.data.username} said ${obj.data.content}`);
     //broadcasting to clients
     wss.clients.forEach(client => {
       client.send(JSON.stringify(obj));
