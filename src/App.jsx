@@ -7,9 +7,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: { name: "Bob" },
+      currentUser: { name: "Anonymous" },
       messages: [],
-      userCount: null
+      userCount: null,
+      userColor: ""
     };
   }
 
@@ -18,7 +19,7 @@ class App extends Component {
     this.connection = new WebSocket("ws://localhost:3001");
 
     // When a connection is made
-    this.connection.onopen = function() {
+    this.connection.onopen = function(e) {
       console.log("Opened connection ");
     };
 
@@ -27,13 +28,16 @@ class App extends Component {
       const returnedData = JSON.parse(event.data);
       // // add the new message to state
 
+      console.log(event.data);
+
       switch (returnedData.type) {
         case "incomingMessage":
           // handle incoming message
           const newMessage = {
             username: returnedData.username,
             content: returnedData.content,
-            id: returnedData.id
+            id: returnedData.id,
+            color: returnedData.color
           };
           this.setState({
             messages: this.state.messages.concat([newMessage])
@@ -58,6 +62,11 @@ class App extends Component {
           console.log("userCount", returnedData);
           this.setState({ userCount: returnedData.users });
           break;
+
+        case "usercolor":
+          console.log("userColor", returnedData);
+          this.setState({ userColor: returnedData.color });
+          break;
         default:
           // show an error in the console if the message type is unknown
           throw new Error("Unknown event type " + returnedData.type);
@@ -74,7 +83,8 @@ class App extends Component {
     const newMessage = {
       type: "postMessage",
       username: this.state.currentUser.name,
-      content: input
+      content: input,
+      color: this.state.userColor
     };
     this.sendDataToServer(newMessage);
   };
@@ -93,6 +103,8 @@ class App extends Component {
     return (
       <div>
         <MessageList
+          currentUser={this.state.currentUser.name}
+          //userColor={this.state.userColor}
           messages={this.state.messages}
           userCount={this.state.userCount}
         />

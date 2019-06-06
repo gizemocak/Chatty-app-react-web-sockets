@@ -7,10 +7,14 @@ class Message extends Component {
     if (message.username === "__system__") {
       return <div className="message system">{message.content}</div>;
     }
-
+    if (message.color) {
+      console.log("colooooor", message.color);
+    }
     return (
       <div className="message">
-        <span className="message-username">{message.username}</span>
+        <span style={{ color: message.color }} className="message-username">
+          {message.username}
+        </span>
         <span className="message-content">{message.content}</span>
       </div>
     );
