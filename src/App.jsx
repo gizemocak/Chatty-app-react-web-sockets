@@ -94,6 +94,10 @@ class App extends Component {
     this.sendDataToServer(newUserName);
   };
 
+  handleUserColorChange = usercolor => {
+    this.setState({ userColor: usercolor });
+  };
+
   render() {
     return (
       <div>
@@ -101,6 +105,7 @@ class App extends Component {
           currentUser={this.state.currentUser.name}
           messages={this.state.messages}
           userCount={this.state.userCount}
+          colorChange={this.handleUserColorChange}
         />
         <ChatBar
           currentUser={this.state.currentUser.name}

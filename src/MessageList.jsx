@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Message from "../src/Message.jsx";
+import { GithubPicker } from "react-color";
+
 class MessageList extends Component {
   handleRenderMessage = () => {
     const { messages } = this.props;
@@ -12,10 +14,31 @@ class MessageList extends Component {
     });
   };
 
+  handleColorChange = e => {
+    console.log("color change event", e.hex);
+    this.props.colorChange(e.hex);
+  };
+
   render() {
     const { userCount } = this.props;
+    const colorPicker = [
+      "#B80000",
+      "#DB3E00",
+      "#FCCB00",
+      "#008B02",
+      "#006B76",
+      "#1273DE",
+      "#004DCF",
+      "#5300EB"
+    ];
     return (
       <div>
+        <div>
+          <GithubPicker
+            colors={colorPicker}
+            onChange={this.handleColorChange}
+          />
+        </div>
         <nav className="navbar">
           <a href="/" className="navbar-brand">
             Chatty
