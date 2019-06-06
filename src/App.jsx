@@ -17,22 +17,17 @@ class App extends Component {
   componentDidMount() {
     // Open a connection
     this.connection = new WebSocket("ws://localhost:3001");
-
     // When a connection is made
     this.connection.onopen = function(e) {
       console.log("Opened connection ");
     };
-
-    // listen to onmessage event
+    // Listen to onmessage event
     this.connection.onmessage = event => {
       const returnedData = JSON.parse(event.data);
-      // // add the new message to state
-
-      console.log(event.data);
 
       switch (returnedData.type) {
+        // handle incoming message from the server
         case "incomingMessage":
-          // handle incoming message
           const newMessage = {
             username: returnedData.username,
             content: returnedData.content,
@@ -44,9 +39,8 @@ class App extends Component {
           });
           break;
 
+        // handle incoming notification from the server
         case "incomingNotification":
-          // handle incoming notification
-          console.log("notification received");
           const newNotification = {
             username: "__system__",
             content: returnedData.content,
@@ -57,18 +51,19 @@ class App extends Component {
           });
           break;
 
+        //handle user count
         case "usercount":
-          //handle user count
           console.log("userCount", returnedData);
           this.setState({ userCount: returnedData.users });
           break;
 
+        //hanlde username color
         case "usercolor":
           console.log("userColor", returnedData);
           this.setState({ userColor: returnedData.color });
           break;
         default:
-          // show an error in the console if the message type is unknown
+          // show an error in the console if the message type is unknown.
           throw new Error("Unknown event type " + returnedData.type);
       }
     };
@@ -104,7 +99,6 @@ class App extends Component {
       <div>
         <MessageList
           currentUser={this.state.currentUser.name}
-          //userColor={this.state.userColor}
           messages={this.state.messages}
           userCount={this.state.userCount}
         />

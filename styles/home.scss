@@ -1,12 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
+@import url('https://fonts.googleapis.com/css?family=Dosis|Open+Sans&display=swap');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 
 h1 {
   color: tomato;
 }
 
 body {
-  background: white;
+  background: #E9CEFE;
   color: black;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -14,8 +18,10 @@ body {
 }
 
 .chatbar {
-  background: tomato;
-  border-top: 1px solid black;
+  -webkit-box-shadow: 0px -1px 8px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px -1px 8px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -1px 8px -1px rgba(0, 0, 0, 0.75);
+  background: #8A2BE2;
   bottom: 0;
   display: flex;
   left: 0;
@@ -26,7 +32,8 @@ body {
 
 .chatbar-message,
 .chatbar-username {
-  border: 1px solid black;
+  border-radius: 5px;
+  color: #8A2BE2;
   display: block;
   height: 40px;
   line-height: 40px;
@@ -69,8 +76,11 @@ body {
 }
 
 .navbar {
-  background: tomato;
-  border-bottom: 1px solid black;
+  -webkit-box-shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.75);
+  color: white;
+  background: #8A2BE2;
   height: 60px;
   left: 0;
   padding: 0 10px;

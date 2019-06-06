@@ -7,7 +7,6 @@ class Message extends Component {
 
   render() {
     const { message } = this.props;
-    const url = ["http", "png", "gif", "jpeg"];
 
     if (message.username === "__system__") {
       return <div className="message system">{message.content}</div>;
@@ -24,6 +23,7 @@ class Message extends Component {
         ) : (
           <span className="message-content">{message.content}</span>
         )}
+        <hr />
       </div>
     );
   }
