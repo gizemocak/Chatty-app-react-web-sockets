@@ -1,5 +1,6 @@
-React Boilerplate
-=====================
+# Chatty App
+
+Chatty App is a real-time chat application.
 
 A minimal and light dev environment for ReactJS.
 
@@ -17,18 +18,6 @@ git remote add origin [YOUR NEW REPOSITORY]
 
 Install the dependencies and start the server.
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
-
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
 ### Linting
 
 This boilerplate project includes React ESLint configuration.
@@ -39,7 +28,24 @@ npm run lint
 
 ### Dependencies
 
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+- React
+- React-dom
+- Webpack
+- [babel-loader](https://github.com/babel/babel-loader)
+- [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+- Babel-core
+- Babel-loader
+- Babel-preset-es2015
+- Babel-preset-react
+- Css-loader
+- Node-sass
+- Sass-loader
+- Sockjs-client
+- Style-loader
+- Express
+- WS
+- Uuid
+
+##Screenshots
+!["Screentshot of chatty messages"](https://github.com/gizemocak/react-simple-boilerplate/blob/b014f3056b6e068ed30702e02253f5be6ae7cb47/docs/color-change.png?raw=true)
+!["Screenshot of embedded youtube vide"](https://github.com/gizemocak/react-simple-boilerplate/blob/b014f3056b6e068ed30702e02253f5be6ae7cb47/docs/emped-youtube-videos.png?raw=true)
