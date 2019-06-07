@@ -10,14 +10,12 @@ class Message extends Component {
   };
 
   getQueryFromVideoURL = url => {
-    console.log("this.getQueryFromVideoURL");
     const splitted = url.split("watch?v=");
     const query = splitted[splitted.length - 1].split("&");
     return query[0];
   };
 
   embedYoutubeVideo = url => {
-    console.log("embed youtube video");
     return (
       <div
         className="video"
@@ -48,7 +46,6 @@ class Message extends Component {
 
   checkURls = url => {
     const { message } = this.props;
-    console.log(this.checkVideoURL(url));
     if (this.checkImageURL(url)) {
       return <img src={message.content} />;
     } else if (this.checkVideoURL(url)) {

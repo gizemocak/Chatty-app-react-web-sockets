@@ -31,7 +31,6 @@ class ChatBar extends Component {
           placeholder="Type a message and hit ENTER"
           onKeyUp={this.handleKeyDown}
         />
-        <div className="error" />
       </form>
     );
   }

@@ -20,7 +20,6 @@ class MessageList extends Component {
 
   // scroll to the bottom whenever your component is updated or a new message is posted
   componentDidUpdate() {
-    console.log("componentDidUpdate");
     this.scrollToBottom();
   }
 

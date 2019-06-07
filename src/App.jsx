@@ -18,9 +18,9 @@ class App extends Component {
     // Open a connection
     this.connection = new WebSocket("ws://localhost:3001");
     // When a connection is made
-    this.connection.onopen = function(e) {
-      console.log("Opened connection ");
-    };
+    // this.connection.onopen = function(e) {
+    //   console.log("Opened connection ");
+    // };
     // Listen to onmessage event
     this.connection.onmessage = event => {
       const returnedData = JSON.parse(event.data);
@@ -53,13 +53,11 @@ class App extends Component {
 
         //handle user count
         case "usercount":
-          console.log("userCount", returnedData);
           this.setState({ userCount: returnedData.users });
           break;
 
         //hanlde username color
         case "usercolor":
-          console.log("userColor", returnedData);
           this.setState({ userColor: returnedData.color });
           break;
         default:
@@ -70,7 +68,7 @@ class App extends Component {
   }
 
   sendDataToServer = data => {
-    // Send the msg object as a JSON-formatted string.
+    // Send the msg object to the server as a JSON-formatted string.
     this.connection.send(JSON.stringify(data));
   };
 
