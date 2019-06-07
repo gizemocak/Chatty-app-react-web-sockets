@@ -5,7 +5,7 @@ class ChatBar extends Component {
     let input = e.target.value;
     if (e.keyCode === 13) {
       this.props.handleNewMessage(input);
-      input = "";
+      document.querySelector("input.chatbar-message").value = "";
     }
   };
 
