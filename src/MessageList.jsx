@@ -43,7 +43,7 @@ class MessageList extends Component {
     ];
     return (
       <div>
-        <div>
+        <div className="colorpicker">
           <GithubPicker
             colors={colorPicker}
             onChange={this.handleColorChange}

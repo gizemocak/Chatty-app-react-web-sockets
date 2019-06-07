@@ -10,7 +10,7 @@ h1 {
 }
 
 body {
-  background: #E9CEFE;
+  background: #FAF7FD;
   color: black;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -52,6 +52,7 @@ body {
 .message {
   display: flex;
   padding: 5px;
+  border-bottom: 1px solid #F1F0F2;
 }
 
 .message.system {
@@ -88,7 +89,7 @@ body {
   right: 0;
   top: 0;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .navbar-brand {
@@ -110,4 +111,12 @@ body {
 
 img {
   width: 60%
+}
+
+.colorpicker {
+  position: fixed;
+}
+
+.messages>div:first-of-type {
+  padding-top: 40px
 }
