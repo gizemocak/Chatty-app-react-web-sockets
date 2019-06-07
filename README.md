@@ -49,4 +49,3 @@ npm run lint
 ##Screenshots
 
 !["Screentshot of chatty messages"](https://github.com/gizemocak/react-simple-boilerplate/blob/b014f3056b6e068ed30702e02253f5be6ae7cb47/docs/color-change.png?raw=true)
-!["Screenshot of embedded youtube vide"](https://github.com/gizemocak/react-simple-boilerplate/blob/b014f3056b6e068ed30702e02253f5be6ae7cb47/docs/emped-youtube-videos.png?raw=true)
