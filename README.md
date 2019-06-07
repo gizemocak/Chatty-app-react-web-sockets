@@ -4,19 +4,15 @@ Chatty App is a real-time chat application.
 
 A minimal and light dev environment for ReactJS.
 
-### Usage
+## Getting Started
 
-Clone the boilerplate and create your own git repo.
-
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
-
-Install the dependencies and start the server.
+1. Fork this repository, then clone your fork of this repository.
+2. Install dependencies using the `npm install` command.
+3. Start the web server using the `npm start` command.
+4. The app will be served at <http://localhost:3000/>.
+5. Open another terminal for the chatty-server directory.
+6. Start the chatty-server using the `npm start` command.
+7. Go to <http://localhost:3000/> in your browser.
 
 ### Linting
 
