@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class ChatBar extends Component {
   handleKeyDown = e => {
     let input = e.target.value;
-    if (e.keyCode === 13) {
+    if (input && e.keyCode === 13) {
       this.props.handleNewMessage(input);
       document.querySelector("input.chatbar-message").value = "";
     }
@@ -31,6 +31,7 @@ class ChatBar extends Component {
           placeholder="Type a message and hit ENTER"
           onKeyUp={this.handleKeyDown}
         />
+        <div className="error" />
       </form>
     );
   }
