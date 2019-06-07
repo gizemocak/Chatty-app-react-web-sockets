@@ -14,18 +14,18 @@ class MessageList extends Component {
     });
   };
 
-  //scroll to the bottom when entering the window and when new messages come in
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   };
 
+  // scroll to the bottom whenever your component is updated or a new message is posted
   componentDidUpdate() {
     console.log("componentDidUpdate");
     this.scrollToBottom();
   }
 
+  //when a user chooses a new color for the username
   handleColorChange = e => {
-    console.log("color change event", e.hex);
     this.props.colorChange(e.hex);
   };
 
@@ -58,6 +58,8 @@ class MessageList extends Component {
           </div>
         </nav>
         <main className="messages">{this.handleRenderMessage()}</main>
+
+        {/* a dummy div to scroll to the bottom of the page*/}
         <div
           style={{ float: "left", clear: "both" }}
           ref={el => {
